@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list class="home_list">
+	<ion-item *ngFor="let item of items"> 
+		<ion-img [src]='item.download_url'>
+		</ion-img>
+    <h3>{{ item.author }}</h3>
+  </ion-item>
+	</ion-list>
+</ion-content>

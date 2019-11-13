@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <ion-grid>
+          <ion-row>
+              <ion-img src="https://picsum.photos/id/{{ item.id }}/600/300">
+              </ion-img>
+          </ion-row>
+          <ion-row>
+              <ion-text><h5>{{ item.author }}</h5></ion-text>
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
+              <ion-button class="ion-margin-top" (click)="showAlert()">Show source</ion-button>
+              <ion-button class="ion-margin-top" (click)="showCamera()">Take Photo</ion-button>
+          </ion-row>
+        </ion-grid>
+</ion-content>

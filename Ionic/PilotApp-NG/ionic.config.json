@@ -1,0 +1,8 @@
+{
+  "name": "PilotApp-NG",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

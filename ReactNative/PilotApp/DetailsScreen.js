@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { StyleSheet, Alert, Button, Image, Text, View } from 'react-native';
+import { StyleSheet, Alert, Image, Text, View } from 'react-native';
+import ImagePicker from 'react-native-image-picker';
+import { RaisedTextButton as Button } from 'react-native-material-buttons';
 
 export default class DetailsScreen extends Component {
 
@@ -18,7 +20,14 @@ export default class DetailsScreen extends Component {
           );
     }
 
+    _takePicture = async() => {
+        ImagePicker.showImagePicker({}, (response) => {
+            console.log('Response = ', response);
+          });
+      };
+
     render() {
+
         const { navigation } = this.props;
         const photo = navigation.getParam('photo');
         return (
@@ -28,11 +37,16 @@ export default class DetailsScreen extends Component {
                     style={styles.img}
                     />
             <Text style={styles.txt}>{photo.author}</Text>
-            <Button
-            style={styles.buttonContainer}
-            onPress={() => this._onPressButton(photo.url)}
-            title="Show source"
-          />
+            <View style={styles.horizontalContainer}>
+                <Button
+                onPress={() => this._onPressButton(photo.url)}
+                title="Show source"
+                />
+                <Button
+                onPress={() => this._takePicture()}
+                title="Take Photo"
+                />
+            </View>
         </View>
         );
     }
@@ -43,6 +57,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
     },
+    horizontalContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 40,
+    },
     img: {
         height: 200,
     },
@@ -50,8 +70,5 @@ const styles = StyleSheet.create({
         padding: 8,
         fontSize: 32,
         fontWeight: '400'
-    },
-    buttonContainer: {
-        margin: 20
     },
 })

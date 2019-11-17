@@ -75,20 +75,21 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
            <FlatList
-          data={this.state.dataSource}
-          renderItem={({item}) => {
-              return(<TouchableHighlight onPress={() => navigate('Details', {
-                  photo: item
+           data={this.state.dataSource}
+           renderItem={({item}) => {
+             return(
+             <TouchableHighlight onPress={() => navigate('Details', {
+               photo: item
               })
               }>
-                  <View style={styles.item}>
-                    <Image
-                    source={{uri: `https://picsum.photos/id/${item.id}/600/300`}}
-                    style={styles.img}
-                    />
-                    <Text>{item.author}</Text>
-                </View>
-         </TouchableHighlight>)
+                <View style={styles.item}>
+                  <Image source={{uri: `https://picsum.photos/id/${item.id}/600/300`}}
+                  style={styles.img}
+                  />
+                  <Text>{item.author}</Text>
+                  </View>
+                  </TouchableHighlight>
+                  )
           }
         }
         />

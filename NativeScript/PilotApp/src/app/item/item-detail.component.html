@@ -1,0 +1,10 @@
+<ActionBar title="Details"></ActionBar>
+
+<StackLayout>
+    <Image src="https://picsum.photos/id/{{ item.id }}/600/300" stretch="aspectFit"></Image>
+    <Label [text]="item.author"></Label>
+    <StackLayout orientation="horizontal" horizontalAlignment="center">
+        <Button class="-primary" text="Show source" (tap)="showAlert()"></Button>
+        <Button class="-primary" text="Take Photo" (tap)="takePhoto()"></Button>
+    </StackLayout>
+</StackLayout>

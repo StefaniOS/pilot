@@ -1,0 +1,8 @@
+StackLayout {
+	height: 220;
+	padding: 8 8;
+}
+
+Label {
+	font-size: 16;
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DetailPage extends StatefulWidget {
   final _photo;
@@ -36,6 +37,11 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
+  void _takePhoto() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    // Use the image here
+  }
+
   @override
   Widget build(BuildContext context) {
     final photoId = _photo["id"];
@@ -58,13 +64,20 @@ class _DetailPageState extends State<DetailPage> {
                   )),
               Container(height: 16.0),
               Divider(),
-              Align(
-                  alignment: FractionalOffset.center,
-                  child: RaisedButton(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children:[
+                  RaisedButton(
                     child: const Text("Show source", style: TextStyle(fontSize: 16.0, color: Colors.white)),
                     color: Colors.lightBlue,
                     onPressed: () => _showDialog(_photo["url"]),
-                  )),
+                  ),
+                  RaisedButton(
+                    child: const Text("Take photo", style: TextStyle(fontSize: 16.0, color: Colors.white)),
+                    color: Colors.lightBlue,
+                    onPressed: () => _takePhoto(),
+                  )
+              ]),
             ],
           ),
         ));
